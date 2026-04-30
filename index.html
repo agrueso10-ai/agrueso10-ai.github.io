@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alvaro Grueso | Senior Project Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F2A4A;
+    --navy-mid: #1a3a5c;
+    --gold: #C9A84C;
+    --gold-light: #e8c97a;
+    --cream: #F8F5EF;
+    --white: #ffffff;
+    --gray: #6b7280;
+    --gray-light: #f3f4f6;
+    --text: #1a1a2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(15, 42, 74, 0.97);
+    backdrop-filter: blur(10px);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600;
+    color: var(--gold); letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none; font-size: 0.85rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .lang-btn {
+    background: transparent; border: 1px solid var(--gold);
+    color: var(--gold); padding: 0.4rem 1rem;
+    border-radius: 2px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem; letter-spacing: 0.1em;
+    text-transform: uppercase; transition: all 0.3s;
+  }
+  .lang-btn:hover { background: var(--gold); color: var(--navy); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+  .hero-left {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 4rem 6rem;
+    position: relative; z-index: 2;
+  }
+  .hero-tag {
+    font-size: 0.75rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-tag::before {
+    content: ''; display: block;
+    width: 2rem; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 300; line-height: 1.1;
+    color: var(--white); margin-bottom: 0.3rem;
+  }
+  .hero h1 span { color: var(--gold); font-weight: 600; }
+  .hero-subtitle {
+    font-size: 1rem; color: rgba(255,255,255,0.6);
+    margin: 1.5rem 0 2.5rem;
+    line-height: 1.7; max-width: 480px;
+  }
+  .hero-stats {
+    display: flex; gap: 3rem; margin-bottom: 3rem;
+  }
+  .stat-item { }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 600;
+    color: var(--gold); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem; color: rgba(255,255,255,0.5);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-top: 0.3rem;
+  }
+  .hero-cta { display: flex; gap: 1rem; align-items: center; }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 0.9rem 2rem; text-decoration: none;
+    font-weight: 500; font-size: 0.85rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: all 0.3s; border: 2px solid var(--gold);
+    display: inline-block;
+  }
+  .btn-primary:hover { background: transparent; color: var(--gold); }
+  .btn-secondary {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 0.85rem; letter-spacing: 0.08em;
+    text-transform: uppercase; transition: color 0.3s;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-secondary:hover { color: var(--gold); }
+  .hero-right {
+    position: relative; display: flex;
+    align-items: flex-end; justify-content: center;
+    padding-top: 5rem;
+  }
+  .hero-img-container {
+    position: relative; width: 420px; height: 560px;
+  }
+  .hero-img-container::before {
+    content: '';
+    position: absolute; bottom: -20px; right: -20px;
+    width: 100%; height: 100%;
+    border: 1px solid rgba(201,168,76,0.3);
+    z-index: 0;
+  }
+  .hero-img-container img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    position: relative; z-index: 1;
+    filter: grayscale(20%);
+  }
+  .hero-badge {
+    position: absolute; bottom: 2rem; left: -3rem;
+    background: var(--gold); color: var(--navy);
+    padding: 1rem 1.5rem; z-index: 10;
+    font-size: 0.75rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .hero-badge strong {
+    display: block; font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 700;
+    letter-spacing: 0; text-transform: none;
+  }
+  .scroll-indicator {
+    position: absolute; bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.5rem; color: rgba(255,255,255,0.3);
+    font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; animation: bounce 2s infinite;
+  }
+  .scroll-indicator::after {
+    content: ''; display: block;
+    width: 1px; height: 3rem;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ABOUT */
+  .about {
+    padding: 8rem 6rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: center;
+    background: var(--white);
+  }
+  .section-tag {
+    font-size: 0.75rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-tag::before {
+    content: ''; display: block;
+    width: 2rem; height: 1px; background: var(--gold);
+  }
+  .about h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400; line-height: 1.2;
+    color: var(--navy); margin-bottom: 1.5rem;
+  }
+  .about p {
+    color: var(--gray); line-height: 1.9;
+    margin-bottom: 1rem; font-size: 0.95rem;
+  }
+  .about-right { }
+  .competency-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .competency-card {
+    background: var(--cream);
+    padding: 1.5rem;
+    border-left: 3px solid var(--gold);
+    transition: transform 0.3s;
+  }
+  .competency-card:hover { transform: translateY(-3px); }
+  .competency-card h4 {
+    font-size: 0.8rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--navy);
+    margin-bottom: 0.5rem; font-weight: 500;
+  }
+  .competency-card p {
+    font-size: 0.8rem; color: var(--gray);
+    line-height: 1.6; margin: 0;
+  }
+
+  /* PROJECTS */
+  .projects {
+    padding: 8rem 6rem;
+    background: var(--cream);
+  }
+  .projects-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 4rem;
+  }
+  .projects h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400; color: var(--navy);
+  }
+  .featured-project {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 0; background: var(--navy);
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 60px rgba(15,42,74,0.15);
+  }
+  .featured-img {
+    position: relative; overflow: hidden;
+    min-height: 500px;
+  }
+  .featured-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+  }
+  .featured-project:hover .featured-img img {
+    transform: scale(1.03);
+  }
+  .featured-badge {
+    position: absolute; top: 1.5rem; left: 1.5rem;
+    background: var(--gold); color: var(--navy);
+    padding: 0.4rem 1rem; font-size: 0.7rem;
+    text-transform: uppercase; letter-spacing: 0.15em;
+    font-weight: 500;
+  }
+  .featured-content {
+    padding: 3.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .featured-content .section-tag { color: var(--gold-light); }
+  .featured-content .section-tag::before { background: var(--gold-light); }
+  .featured-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 400;
+    color: var(--white); margin-bottom: 0.5rem;
+  }
+  .featured-location {
+    font-size: 0.8rem; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .featured-content p {
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8; font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  .project-metrics {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; margin-bottom: 2rem;
+  }
+  .metric {
+    text-align: center;
+    padding: 1rem; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .metric-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600;
+    color: var(--gold); display: block;
+  }
+  .metric-label {
+    font-size: 0.65rem; color: rgba(255,255,255,0.4);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    display: block; margin-top: 0.2rem;
+  }
+  .turnaround-box {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 1rem 1.2rem; margin-bottom: 1.5rem;
+  }
+  .turnaround-box p {
+    font-size: 0.8rem; color: var(--gold-light);
+    line-height: 1.6; margin: 0;
+  }
+  .turnaround-box strong { color: var(--gold); }
+
+  /* Project cards grid */
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .project-card {
+    background: var(--white);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(15,42,74,0.12);
+  }
+  .card-img {
+    height: 200px; overflow: hidden;
+    background: var(--navy);
+    position: relative;
+  }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .project-card:hover .card-img img { transform: scale(1.05); }
+  .card-img-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  }
+  .card-img-placeholder span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; color: rgba(201,168,76,0.3);
+  }
+  .card-body { padding: 1.5rem; }
+  .card-tag {
+    font-size: 0.65rem; text-transform: uppercase;
+    letter-spacing: 0.15em; color: var(--gold);
+    margin-bottom: 0.7rem; display: block;
+  }
+  .card-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; color: var(--navy);
+    margin-bottom: 0.5rem; font-weight: 600;
+  }
+  .card-body p {
+    font-size: 0.82rem; color: var(--gray);
+    line-height: 1.7; margin-bottom: 1rem;
+  }
+  .card-stats {
+    display: flex; gap: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gray-light);
+  }
+  .card-stat span:first-child {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; color: var(--navy); font-weight: 600;
+  }
+  .card-stat span:last-child {
+    font-size: 0.65rem; color: var(--gray);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* SKILLS */
+  .skills {
+    padding: 8rem 6rem;
+    background: var(--navy);
+  }
+  .skills .section-tag { color: var(--gold); }
+  .skills .section-tag::before { background: var(--gold); }
+  .skills h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400; color: var(--white);
+    margin-bottom: 3rem;
+  }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .skill-group h4 {
+    font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 0.15em; color: var(--gold);
+    margin-bottom: 1.2rem; padding-bottom: 0.7rem;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .skill-group ul { list-style: none; }
+  .skill-group li {
+    font-size: 0.85rem; color: rgba(255,255,255,0.65);
+    padding: 0.4rem 0;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .skill-group li::before {
+    content: ''; display: block;
+    width: 4px; height: 4px;
+    background: var(--gold); border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 8rem 6rem;
+    background: var(--cream);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: center;
+  }
+  .contact h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-weight: 300; color: var(--navy);
+    line-height: 1.2; margin-bottom: 1.5rem;
+  }
+  .contact h2 em {
+    font-style: italic; color: var(--gold);
+  }
+  .contact p {
+    color: var(--gray); line-height: 1.8;
+    font-size: 0.95rem; margin-bottom: 2.5rem;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    text-decoration: none; color: var(--navy);
+    padding: 1.2rem 1.5rem;
+    background: var(--white);
+    border-left: 3px solid var(--gold);
+    transition: all 0.3s; font-size: 0.9rem;
+  }
+  .contact-link:hover {
+    background: var(--navy); color: var(--white);
+    transform: translateX(5px);
+  }
+  .contact-link .link-icon {
+    font-size: 1.2rem; width: 1.5rem; text-align: center;
+  }
+  .contact-right {
+    background: var(--navy); padding: 3rem;
+    position: relative;
+  }
+  .contact-right::before {
+    content: '';
+    position: absolute; top: -15px; right: -15px;
+    width: 100%; height: 100%;
+    border: 1px solid rgba(201,168,76,0.2);
+    z-index: 0;
+  }
+  .contact-right > * { position: relative; z-index: 1; }
+  .availability-badge {
+    display: flex; align-items: center; gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  .dot {
+    width: 10px; height: 10px;
+    background: #22c55e; border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.3); }
+  }
+  .availability-badge span {
+    font-size: 0.8rem; color: rgba(255,255,255,0.6);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .contact-right h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; color: var(--white);
+    font-weight: 400; margin-bottom: 1rem;
+  }
+  .contact-right p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem; line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .rate-display {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 1.5rem; text-align: center;
+  }
+  .rate-display .rate {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; color: var(--gold); font-weight: 600;
+    display: block; line-height: 1;
+  }
+  .rate-display .rate-label {
+    font-size: 0.7rem; color: rgba(255,255,255,0.4);
+    text-transform: uppercase; letter-spacing: 0.15em;
+    margin-top: 0.3rem; display: block;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 2rem 6rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+  footer p {
+    font-size: 0.8rem; color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+  }
+  footer .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; color: var(--gold); font-weight: 600;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0; transform: translateY(30px);
+    animation: fadeIn 0.8s forwards;
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.3s; }
+  .fade-in:nth-child(3) { animation-delay: 0.5s; }
+  .fade-in:nth-child(4) { animation-delay: 0.7s; }
+
+  /* LANG HIDDEN */
+  [data-lang] { display: none; }
+  .lang-en [data-lang="en"] { display: block; }
+  .lang-es [data-lang="es"] { display: block; }
+  .lang-en [data-lang-inline="en"] { display: inline; }
+  .lang-es [data-lang-inline="es"] { display: inline; }
+
+  @media (max-width: 1024px) {
+    nav { padding: 1rem 2rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 7rem 2rem 3rem; }
+    .hero-right { display: none; }
+    .about, .contact { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3rem; }
+    .projects { padding: 5rem 2rem; }
+    .featured-project { grid-template-columns: 1fr; }
+    .featured-img { min-height: 280px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills { padding: 5rem 2rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    footer { padding: 1.5rem 2rem; }
+  }
+</style>
+</head>
+<body class="lang-en">
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AG</div>
+  <ul class="nav-links">
+    <li><a href="#about"><span data-lang-inline="en">About</span><span data-lang-inline="es" style="display:none">Sobre mí</span></a></li>
+    <li><a href="#projects"><span data-lang-inline="en">Projects</span><span data-lang-inline="es" style="display:none">Proyectos</span></a></li>
+    <li><a href="#skills"><span data-lang-inline="en">Skills</span><span data-lang-inline="es" style="display:none">Habilidades</span></a></li>
+    <li><a href="#contact"><span data-lang-inline="en">Contact</span><span data-lang-inline="es" style="display:none">Contacto</span></a></li>
+  </ul>
+  <button class="lang-btn" onclick="toggleLang()">ES / EN</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag fade-in">
+      <span data-lang-inline="en">Senior Project Manager</span>
+      <span data-lang-inline="es" style="display:none">Gerente de Proyectos Senior</span>
+    </div>
+    <h1 class="fade-in">
+      Alvaro<br><span>Grueso</span>
+    </h1>
+    <p class="hero-subtitle fade-in">
+      <span data-lang-inline="en">Project Controls & Cost Management specialist with 7+ years delivering complex construction and infrastructure projects across Latin America. PMP® Candidate.</span>
+      <span data-lang-inline="es" style="display:none">Especialista en Control de Proyectos y Gestión de Costos con 7+ años entregando proyectos de construcción e infraestructura complejos en Latinoamérica. Candidato PMP®.</span>
+    </p>
+    <div class="hero-stats fade-in">
+      <div class="stat-item">
+        <div class="stat-num">$57M</div>
+        <div class="stat-label"><span data-lang-inline="en">Portfolio Managed</span><span data-lang-inline="es" style="display:none">Portafolio Gestionado</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">18+</div>
+        <div class="stat-label"><span data-lang-inline="en">Projects Delivered</span><span data-lang-inline="es" style="display:none">Proyectos Entregados</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">7+</div>
+        <div class="stat-label"><span data-lang-inline="en">Years Experience</span><span data-lang-inline="es" style="display:none">Años de Experiencia</span></div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">
+        <span data-lang-inline="en">View Projects</span>
+        <span data-lang-inline="es" style="display:none">Ver Proyectos</span>
+      </a>
+      <a href="#contact" class="btn-secondary">
+        <span data-lang-inline="en">Let's talk →</span>
+        <span data-lang-inline="es" style="display:none">Hablemos →</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-container">
+      <img src="photo.jpg" alt="Alvaro Grueso">
+      <div class="hero-badge">
+        <strong>PMP®</strong>
+        <span data-lang-inline="en">Candidate Q3 2026</span>
+        <span data-lang-inline="es" style="display:none">Candidato Q3 2026</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-left">
+    <div class="section-tag">
+      <span data-lang-inline="en">About Me</span>
+      <span data-lang-inline="es" style="display:none">Sobre Mí</span>
+    </div>
+    <h2>
+      <span data-lang-inline="en">I don't just manage projects.<br>I rescue them.</span>
+      <span data-lang-inline="es" style="display:none">No solo gestiono proyectos.<br>Los rescato.</span>
+    </h2>
+    <p>
+      <span data-lang-inline="en">Civil Engineer and Project Manager with 7+ years of experience structuring, controlling, and delivering complex construction projects. My expertise centers on Earned Value Management, cost control, and financial turnaround of distressed projects.</span>
+      <span data-lang-inline="es" style="display:none">Ingeniero Civil y Gerente de Proyectos con 7+ años de experiencia estructurando, controlando y entregando proyectos de construcción complejos. Mi especialidad es la Gestión de Valor Ganado, control de costos y el turnaround financiero de proyectos en dificultades.</span>
+    </p>
+    <p>
+      <span data-lang-inline="en">I've worked in Colombia and the Dominican Republic, managing portfolios up to USD 57M across residential, hospitality, and infrastructure sectors. Currently completing my MSc in Project Management at Summa University (Florida) and preparing for PMP® certification.</span>
+      <span data-lang-inline="es" style="display:none">He trabajado en Colombia y República Dominicana, gestionando portafolios de hasta USD 57M en sectores residencial, hotelero e infraestructura. Actualmente cursando mi MSc en Gestión de Proyectos en Summa University (Florida) y preparándome para la certificación PMP®.</span>
+    </p>
+    <p>
+      <span data-lang-inline="en">Available for remote international engagements.</span>
+      <span data-lang-inline="es" style="display:none">Disponible para proyectos remotos internacionales.</span>
+    </p>
+  </div>
+  <div class="about-right">
+    <div class="competency-grid">
+      <div class="competency-card">
+        <h4><span data-lang-inline="en">Cost Control</span><span data-lang-inline="es" style="display:none">Control de Costos</span></h4>
+        <p><span data-lang-inline="en">EVM, EAC, BAC, TCPI, SPI. Budget structuring from pre-feasibility to execution.</span><span data-lang-inline="es" style="display:none">EVM, EAC, BAC, TCPI, SPI. Estructuración de presupuestos desde prefactibilidad hasta ejecución.</span></p>
+      </div>
+      <div class="competency-card">
+        <h4><span data-lang-inline="en">Project Structuring</span><span data-lang-inline="es" style="display:none">Estructuración</span></h4>
+        <p><span data-lang-inline="en">WBS, Project Charters, Scope Statements, AACE Class 2–5 estimates.</span><span data-lang-inline="es" style="display:none">EDT, Actas de Constitución, Declaraciones de Alcance, estimaciones AACE Clase 2–5.</span></p>
+      </div>
+      <div class="competency-card">
+        <h4><span data-lang-inline="en">Risk Management</span><span data-lang-inline="es" style="display:none">Gestión de Riesgos</span></h4>
+        <p><span data-lang-inline="en">Schedule reserve analysis, inflation buffers, contingency planning.</span><span data-lang-inline="es" style="display:none">Análisis de reservas de cronograma, buffers de inflación, planificación de contingencias.</span></p>
+      </div>
+      <div class="competency-card">
+        <h4><span data-lang-inline="en">Scheduling</span><span data-lang-inline="es" style="display:none">Programación</span></h4>
+        <p><span data-lang-inline="en">MS Project, CPM, Line of Balance (LOB), S-curves, baseline development.</span><span data-lang-inline="es" style="display:none">MS Project, CPM, Línea de Balance (LOB), curvas S, desarrollo de líneas base.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="projects-header">
+    <div>
+      <div class="section-tag">
+        <span data-lang-inline="en">Selected Work</span>
+        <span data-lang-inline="es" style="display:none">Trabajo Seleccionado</span>
+      </div>
+      <h2>
+        <span data-lang-inline="en">Project Portfolio</span>
+        <span data-lang-inline="es" style="display:none">Portafolio de Proyectos</span>
+      </h2>
+    </div>
+  </div>
+
+  <!-- FEATURED PROJECT -->
+  <div class="featured-project">
+    <div class="featured-img">
+      <img src="https://grupoavalon.com/storage/property/vista-avalon-1743590772.jpg" alt="Vista Avalon & Avalon Portfolio">
+      <div class="featured-badge">
+        <span data-lang-inline="en">Featured Project</span>
+        <span data-lang-inline="es" style="display:none">Proyecto Destacado</span>
+      </div>
+    </div>
+    <div class="featured-content">
+      <div class="section-tag">
+        <span data-lang-inline="en">Budget & Cost Control Manager</span>
+        <span data-lang-inline="es" style="display:none">Gerente de Presupuesto y Control de Costos</span>
+      </div>
+      <h3>Avalon Group — Residential Portfolio</h3>
+      <div class="featured-location">📍 Punta Cana, Dominican Republic · 2025–2026</div>
+      <p>
+        <span data-lang-inline="en">Managed cost planning and financial control for a portfolio of 488 residential units across 5 luxury projects — Vista Avalon (252 units), Cap Avalon (131 units), and Macao Hills I, II & III — in Punta Cana's premier real estate market.</span>
+        <span data-lang-inline="es" style="display:none">Gestioné la planificación de costos y el control financiero de un portafolio de 488 unidades residenciales en 5 proyectos de lujo — Vista Avalon (252 unidades), Cap Avalon (131 unidades) y Macao Hills I, II y III — en el mercado inmobiliario premium de Punta Cana.</span>
+      </p>
+      <div class="turnaround-box">
+        <p>
+          <strong>⚡ <span data-lang-inline="en">Financial Turnaround:</span><span data-lang-inline="es" style="display:none">Turnaround Financiero:</span></strong>
+          <span data-lang-inline="en"> Inherited projects with severe cost overruns — contractors were being paid 3–4x market rates with no work package budget control. Rebuilt the entire cost structure from scratch, establishing USD/m² benchmarks and EVM-based controls to restore target profitability.</span>
+          <span data-lang-inline="es" style="display:none"> Recibí proyectos con sobrecostos graves — los contratistas cobraban 3–4 veces el valor de mercado sin control por paquetes de trabajo. Reconstruí la estructura de costos completa, estableciendo referencias USD/m² y controles basados en EVM para restaurar la rentabilidad objetivo.</span>
+        </p>
+      </div>
+      <div class="project-metrics">
+        <div class="metric">
+          <span class="metric-val">$57M</span>
+          <span class="metric-label"><span data-lang-inline="en">Portfolio Value</span><span data-lang-inline="es" style="display:none">Valor Portafolio</span></span>
+        </div>
+        <div class="metric">
+          <span class="metric-val">488</span>
+          <span class="metric-label"><span data-lang-inline="en">Units Managed</span><span data-lang-inline="es" style="display:none">Unidades Gestionadas</span></span>
+        </div>
+        <div class="metric">
+          <span class="metric-val">5</span>
+          <span class="metric-label"><span data-lang-inline="en">Projects</span><span data-lang-inline="es" style="display:none">Proyectos</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT CARDS -->
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="card-img">
+        <img src="https://grupoavalon.com/storage/property/macao-hills.png" alt="Macao Hills">
+      </div>
+      <div class="card-body">
+        <span class="card-tag">
+          <span data-lang-inline="en">Pre-feasibility & Structuring</span>
+          <span data-lang-inline="es" style="display:none">Prefactibilidad y Estructuración</span>
+        </span>
+        <h3>Macao Hills I, II & III</h3>
+        <p>
+          <span data-lang-inline="en">Luxury villas near Macao Beach. Structured budgets and feasibility studies for Phase I (183 units) and developed project framework for Phases II & III.</span>
+          <span data-lang-inline="es" style="display:none">Villas de lujo cerca de Playa Macao. Estructuré presupuestos y estudios de factibilidad para la Fase I (183 unidades) y desarrollé el marco del proyecto para las Fases II y III.</span>
+        </p>
+        <div class="card-stats">
+          <div class="card-stat">
+            <span>183</span>
+            <span><span data-lang-inline="en">Units Phase I</span><span data-lang-inline="es" style="display:none">Unidades Fase I</span></span>
+          </div>
+          <div class="card-stat">
+            <span>AACE 2–5</span>
+            <span><span data-lang-inline="en">Estimate Classes</span><span data-lang-inline="es" style="display:none">Clases de Estimado</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-img card-img-placeholder">
+        <span>🏗</span>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">
+          <span data-lang-inline="en">Preconstruction & Value Engineering</span>
+          <span data-lang-inline="es" style="display:none">Preconstrucción e Ingeniería de Valor</span>
+        </span>
+        <h3>Constructora Maring</h3>
+        <p>
+          <span data-lang-inline="en">Led pre-feasibility studies and developed 5 budget types for full economic project control. Implemented cost-checking processes that reduced overruns by 15% and achieved 10% savings through value engineering.</span>
+          <span data-lang-inline="es" style="display:none">Lideré estudios de prefactibilidad y desarrollé 5 tipos de presupuesto para control económico total. Implementé procesos de verificación que redujeron sobrecostos en 15% y lograron 10% de ahorro mediante ingeniería de valor.</span>
+        </p>
+        <div class="card-stats">
+          <div class="card-stat">
+            <span>-15%</span>
+            <span><span data-lang-inline="en">Cost Overruns</span><span data-lang-inline="es" style="display:none">Sobrecostos</span></span>
+          </div>
+          <div class="card-stat">
+            <span>10%</span>
+            <span><span data-lang-inline="en">Cost Savings</span><span data-lang-inline="es" style="display:none">Ahorro</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-img card-img-placeholder">
+        <span>🏘</span>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">
+          <span data-lang-inline="en">Planning & Schedule Control</span>
+          <span data-lang-inline="es" style="display:none">Planeación y Control de Cronograma</span>
+        </span>
+        <h3>Constructora Bolívar Cali</h3>
+        <p>
+          <span data-lang-inline="en">Planned, implemented, and controlled 18 civil engineering projects ranging from USD 140K to USD 11M. Implemented LOB scheduling methodology, reducing delays by 13% across 21 initiatives.</span>
+          <span data-lang-inline="es" style="display:none">Planifiqué, implementé y controlé 18 proyectos de ingeniería civil de USD 140K a USD 11M. Implementé metodología LOB reduciendo retrasos en 13% en 21 iniciativas.</span>
+        </p>
+        <div class="card-stats">
+          <div class="card-stat">
+            <span>18</span>
+            <span><span data-lang-inline="en">Projects</span><span data-lang-inline="es" style="display:none">Proyectos</span></span>
+          </div>
+          <div class="card-stat">
+            <span>+38%</span>
+            <span>ROI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="section-tag">
+    <span data-lang-inline="en">Expertise</span>
+    <span data-lang-inline="es" style="display:none">Expertise</span>
+  </div>
+  <h2>
+    <span data-lang-inline="en">Skills & Tools</span>
+    <span data-lang-inline="es" style="display:none">Habilidades y Herramientas</span>
+  </h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>
+        <span data-lang-inline="en">Project Management</span>
+        <span data-lang-inline="es" style="display:none">Gestión de Proyectos</span>
+      </h4>
+      <ul>
+        <li>Earned Value Management (EVM)</li>
+        <li>Cost Control & Budget Mgmt</li>
+        <li>Risk Management</li>
+        <li>Scope Management</li>
+        <li>Stakeholder Management</li>
+        <li>Project Lifecycle (PMBOK)</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h4>
+        <span data-lang-inline="en">Scheduling & Planning</span>
+        <span data-lang-inline="es" style="display:none">Programación y Planeación</span>
+      </h4>
+      <ul>
+        <li>Work Breakdown Structure (WBS)</li>
+        <li>Critical Path Method (CPM)</li>
+        <li>Line of Balance (LOB)</li>
+        <li>S-Curve Analysis</li>
+        <li>AACE Class 2–5 Estimates</li>
+        <li>Pre-feasibility Studies</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h4>
+        <span data-lang-inline="en">Software & Tools</span>
+        <span data-lang-inline="es" style="display:none">Software y Herramientas</span>
+      </h4>
+      <ul>
+        <li>Microsoft Project</li>
+        <li>Power BI</li>
+        <li>Advanced Excel</li>
+        <li>AutoCAD Civil 3D</li>
+        <li>SAP / SINCO</li>
+        <li>BIM / Revit</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h4>
+        <span data-lang-inline="en">Education</span>
+        <span data-lang-inline="es" style="display:none">Educación</span>
+      </h4>
+      <ul>
+        <li>MSc Project Management<br><small style="color:rgba(255,255,255,0.3)">Summa University, FL (2027)</small></li>
+        <li>BSc Civil Engineering<br><small style="color:rgba(255,255,255,0.3)">P. Universidad Javeriana</small></li>
+        <li>PMP® Candidate Q3 2026</li>
+        <li>
+          <span data-lang-inline="en">English (Professional)</span>
+          <span data-lang-inline="es" style="display:none">Inglés (Profesional)</span>
+        </li>
+        <li>
+          <span data-lang-inline="en">Spanish (Native)</span>
+          <span data-lang-inline="es" style="display:none">Español (Nativo)</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <div class="section-tag">
+      <span data-lang-inline="en">Get In Touch</span>
+      <span data-lang-inline="es" style="display:none">Contacto</span>
+    </div>
+    <h2>
+      <span data-lang-inline="en">Let's work on your <em>next project</em></span>
+      <span data-lang-inline="es" style="display:none">Trabajemos en tu <em>próximo proyecto</em></span>
+    </h2>
+    <p>
+      <span data-lang-inline="en">Available for remote project management engagements globally. Whether you need cost control, project structuring, or full lifecycle management — let's talk.</span>
+      <span data-lang-inline="es" style="display:none">Disponible para proyectos de gestión remota a nivel global. Ya sea control de costos, estructuración o gestión del ciclo completo — hablemos.</span>
+    </p>
+    <div class="contact-links">
+      <a href="mailto:agrueso10@gmail.com" class="contact-link">
+        <span class="link-icon">✉</span>
+        agrueso10@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/alvarogrueso/" target="_blank" class="contact-link">
+        <span class="link-icon">in</span>
+        linkedin.com/in/alvarogrueso
+      </a>
+      <a href="https://www.upwork.com/freelancers/alvarogrueso" target="_blank" class="contact-link">
+        <span class="link-icon">⬆</span>
+        <span data-lang-inline="en">Hire me on Upwork</span>
+        <span data-lang-inline="es" style="display:none">Contrátame en Upwork</span>
+      </a>
+    </div>
+  </div>
+  <div class="contact-right">
+    <div class="availability-badge">
+      <div class="dot"></div>
+      <span>
+        <span data-lang-inline="en">Available for new projects</span>
+        <span data-lang-inline="es" style="display:none">Disponible para nuevos proyectos</span>
+      </span>
+    </div>
+    <h3>
+      <span data-lang-inline="en">Remote-first.<br>Results-driven.</span>
+      <span data-lang-inline="es" style="display:none">Remote-first.<br>Orientado a resultados.</span>
+    </h3>
+    <p>
+      <span data-lang-inline="en">Based in Cali, Colombia. Working across US, Canada, Europe & Latin America time zones.</span>
+      <span data-lang-inline="es" style="display:none">Basado en Cali, Colombia. Trabajando en zonas horarias de EE.UU., Canadá, Europa y Latinoamérica.</span>
+    </p>
+    <div class="rate-display">
+      <span class="rate">$45<small style="font-size:1.5rem">/hr</small></span>
+      <span class="rate-label">
+        <span data-lang-inline="en">Starting Rate · Upwork</span>
+        <span data-lang-inline="es" style="display:none">Tarifa Inicial · Upwork</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Alvaro Grueso</div>
+  <p>© 2026 · Senior Project Manager · Cali, Colombia</p>
+  <p>agrueso10@gmail.com</p>
+</footer>
+
+<script>
+  function toggleLang() {
+    const body = document.body;
+    if (body.classList.contains('lang-en')) {
+      body.classList.remove('lang-en');
+      body.classList.add('lang-es');
+      // Toggle nav inline spans
+      document.querySelectorAll('[data-lang-inline="en"]').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('[data-lang-inline="es"]').forEach(el => el.style.display = 'inline');
+    } else {
+      body.classList.remove('lang-es');
+      body.classList.add('lang-en');
+      document.querySelectorAll('[data-lang-inline="en"]').forEach(el => el.style.display = 'inline');
+      document.querySelectorAll('[data-lang-inline="es"]').forEach(el => el.style.display = 'none');
+    }
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.competency-card, .project-card, .skill-group, .featured-project').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
